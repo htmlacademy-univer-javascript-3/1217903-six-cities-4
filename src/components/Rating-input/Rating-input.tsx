@@ -1,11 +1,11 @@
-import { Fragment } from "react";
+import { Fragment } from 'react';
 
 const rates = [
-  { value: 1, title: "terribly" },
-  { value: 2, title: "badly" },
-  { value: 3, title: "not bad" },
-  { value: 4, title: "good" },
-  { value: 5, title: "perfect" }
+  { value: 1, title: 'terribly' },
+  { value: 2, title: 'badly' },
+  { value: 3, title: 'not bad' },
+  { value: 4, title: 'good' },
+  { value: 5, title: 'perfect' }
 
 ];
 
@@ -19,9 +19,9 @@ function RatingInput({rating, onRateChange}: RatingInputProps): JSX.Element {
     <div className="reviews__rating-form form__rating">
       {
         rates.map(({ value, title }) => {
-          const id = `${value}-stars`
+          const id = `${value}-stars`;
           return (
-            <Fragment>
+            <Fragment key={value}>
               <input
                 className="form__rating-input visually-hidden"
                 name="rating"

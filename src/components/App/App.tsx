@@ -1,16 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from '../../pages/Main-page';
+import {OffersShort} from '../../types/offer-type';
 import Favorites from '../../pages/Favorites-page';
 import Offer from '../../pages/Offer-page';
 import { AppRoute, AuthorizationStatus } from '../../consts';
 import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
-import { OffersDetailed, OffersShort } from '../../types/offer-type'
 import SignIn from '../../pages/SignIn-page';
 type AppProps = {
-  cardsCount: number;
   offersShort: OffersShort;
-  offersDetailed: OffersDetailed;
   favoritesOffers: OffersShort;
 };
 

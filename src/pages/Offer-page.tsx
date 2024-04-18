@@ -1,12 +1,14 @@
-import { Navigate, useParams } from "react-router-dom";
-import Header from "../components/Header/Header";
-import { mockOffersDetailed } from '../mocks/offers-detailed'
-import { AppRoute } from "../consts";
-import ReviewForm from "../components/Reviews-form/Reviews-form";
+import { Navigate, useParams } from 'react-router-dom';
+import Header from '../components/Header/Header';
+import { mockOffersDetailed } from '../mocks/offers-detailed';
+import { AppRoute } from '../consts';
+import ReviewForm from '../components/Reviews-form/Reviews-form';
 function Offer(): JSX.Element {
   const { id } = useParams();
-  const offer = mockOffersDetailed.find(offer => offer.id === id);
-  if (!offer) { return <Navigate to={AppRoute.NotFound}></Navigate> }
+  const offer = mockOffersDetailed.find((el) => el.id === id);
+  if (!offer) {
+    return <Navigate to={AppRoute.NotFound}/>;
+  }
   return (
     <div className="page">
       <Header></Header>

@@ -1,5 +1,5 @@
 import Header from '../components/Header/Header.tsx';
-import OffersList from '../components/Offer-list/Offer-list.tsx'
+import OffersList from '../components/Offer-list/Offer-list.tsx';
 import { OffersShort } from '../types/offer-type.ts';
 
 type MainProps = {

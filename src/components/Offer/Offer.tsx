@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { OfferShort } from "../../types/offer-type";
-import { AppRoute } from "../../consts";
+import { Link } from 'react-router-dom';
+import { OfferShort } from '../../types/offer-type';
+import { AppRoute } from '../../consts';
 
 type OfferProps = {
   offer: OfferShort;
@@ -8,7 +8,6 @@ type OfferProps = {
 }
 
 function Card(props: OfferProps): JSX.Element {
-  
   return (
     <article
       className="cities__card place-card"
@@ -27,7 +26,8 @@ function Card(props: OfferProps): JSX.Element {
             src={props.offer.previewImage}
             width="260"
             height="200"
-            alt="Place previewImage" />
+            alt="Place previewImage"
+          />
         </Link>
       </div>
       <div className="place-card__info">

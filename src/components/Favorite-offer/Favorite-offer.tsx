@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { OfferShort } from "../../types/offer-type";
-import { AppRoute } from "../../consts";
+import { Link } from 'react-router-dom';
+import { OfferShort } from '../../types/offer-type';
+import { AppRoute } from '../../consts';
 
 type FavoriteOfferProps = {
   offer: OfferShort;
@@ -26,7 +26,8 @@ function FavoriteOffer(props: FavoriteOfferProps): JSX.Element {
             src={props.offer.previewImage}
             width="150"
             height="110"
-            alt="Place previewImage" />
+            alt="Place previewImage"
+          />
         </Link>
       </div>
       <div className="favorites__card-info place-card__info">

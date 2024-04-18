@@ -1,6 +1,6 @@
-import FavoriteOffersList from "../components/Favorite-offer-list/Favorite-offer-list";
-import Header from "../components/Header/Header";
-import { OffersShort } from "../types/offer-type";
+import FavoriteOffersList from '../components/Favorite-offer-list/Favorite-offer-list';
+import Header from '../components/Header/Header';
+import { OffersShort } from '../types/offer-type';
 
 type FavoritePageProps = {
   favoriteOffers: OffersShort;
@@ -14,7 +14,7 @@ function Favorites(props: FavoritePageProps): JSX.Element {
         <div className="page__favorites-container container">
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
-                <FavoriteOffersList favoriteOffers = {props.favoriteOffers}></FavoriteOffersList>
+            <FavoriteOffersList favoriteOffers={props.favoriteOffers}></FavoriteOffersList>
           </section>
         </div>
       </main>
