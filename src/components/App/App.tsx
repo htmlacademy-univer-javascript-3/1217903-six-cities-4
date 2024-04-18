@@ -1,34 +1,38 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Main from '../../pages/Main';
-import Login from '../../pages/Login';
-import Favorites from '../../pages/Favorites';
-import Offer from '../../pages/Offer';
-import {AppRoute, AuthorizationStatus} from '../../consts';
-import NotFound from '../../pages/NotFound';
+import Main from '../../pages/Main-page';
+import Favorites from '../../pages/Favorites-page';
+import Offer from '../../pages/Offer-page';
+import { AppRoute, AuthorizationStatus } from '../../consts';
+import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
+import { OffersDetailed, OffersShort } from '../../types/offer-type'
+import SignIn from '../../pages/SignIn-page';
 type AppProps = {
   cardsCount: number;
+  offersShort: OffersShort;
+  offersDetailed: OffersDetailed;
+  favoritesOffers: OffersShort;
 };
 
-function App({ cardsCount }: AppProps): JSX.Element {
+function App(props: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Main cardsCount={cardsCount} />}
+          element={<Main offers={props.offersShort} />}
         />
         <Route
-          path={AppRoute.Login}
-          element={<Login />}
+          path={AppRoute.SignIn}
+          element={<SignIn />}
         />
         <Route
           path={AppRoute.Favorite}
-          element={<PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}><Favorites /></PrivateRoute>}
+          element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorites favoriteOffers={props.favoritesOffers}></Favorites></PrivateRoute>}
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer />}
+          element={<Offer /*offersDetailed={props.offersDetailed}*/ />}
         />
         <Route
           path='*'
