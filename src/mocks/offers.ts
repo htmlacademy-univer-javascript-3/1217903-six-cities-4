@@ -1,4 +1,5 @@
 import { OffersShort } from '../types/offer-type';
+import {points} from './points';
 
 export const mockOffersShort: OffersShort = [
   {
@@ -10,14 +11,14 @@ export const mockOffersShort: OffersShort = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: points[0].latitude,
+        longitude: points[0].longitude,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.868610000000004,
-      longitude: 2.342499,
+      latitude: points[0].latitude,
+      longitude: points[0].longitude,
       zoom: 16
     },
     isFavorite: false,
@@ -33,14 +34,14 @@ export const mockOffersShort: OffersShort = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: points[1].latitude,
+        longitude: points[1].longitude,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.858610000000006,
-      longitude: 2.330499,
+      latitude: points[1].latitude,
+      longitude: points[1].longitude,
       zoom: 16
     },
     isFavorite: true,
@@ -55,14 +56,14 @@ export const mockOffersShort: OffersShort = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 48.85761,
-        longitude: 2.351499,
+        latitude: points[2].latitude,
+        longitude:points[2].longitude,
         zoom: 16
       }
     },
     location: {
-      latitude: 48.85761,
-      longitude: 2.358499,
+      latitude: points[2].latitude,
+      longitude: points[2].longitude,
       zoom: 16
     },
     isFavorite: true,
@@ -78,14 +79,14 @@ export const mockOffersShort: OffersShort = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: points[3].latitude,
+        longitude: points[3].longitude,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.834610000000005,
-      longitude: 2.335499,
+      latitude: points[3].latitude,
+      longitude: points[3].longitude,
       zoom: 16
     },
     isFavorite: false,
