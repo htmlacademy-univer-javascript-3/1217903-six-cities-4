@@ -10,6 +10,8 @@ import SignIn from '../../pages/SignIn-page';
 type AppProps = {
   offersShort: OffersShort;
   favoritesOffers: OffersShort;
+  reviews: ReviewsProps[];
+  nearPlaces: OffersShort;
 };
 
 function App(props: AppProps): JSX.Element {
@@ -30,7 +32,7 @@ function App(props: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer /*offersDetailed={props.offersDetailed}*/ />}
+          element={<Offer nearPlaces={props.nearPlaces} reviews={props.reviews}/>}
         />
         <Route
           path='*'
