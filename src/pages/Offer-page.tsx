@@ -8,6 +8,7 @@ import NearPlaces from '../components/Near-places/Near-places';
 import { OffersShort } from '../types/offer-type';
 import { Location } from '../types/location-type';
 import Map from '../components/Map/Map';
+import { ReviewsProps } from '../types/reviews-type';
 type OfferPageProps = {
   reviews: ReviewsProps[];
   nearPlaces: OffersShort;

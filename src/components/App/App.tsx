@@ -7,6 +7,7 @@ import { AppRoute, AuthorizationStatus } from '../../consts';
 import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
 import SignIn from '../../pages/SignIn-page';
+import { ReviewsProps } from '../../types/reviews-type';
 type AppProps = {
   offersShort: OffersShort;
   favoritesOffers: OffersShort;

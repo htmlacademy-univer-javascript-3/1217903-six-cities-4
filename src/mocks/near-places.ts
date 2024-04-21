@@ -1,4 +1,4 @@
-import {OffersShort} from '../types/offer-type';
+import { OffersShort } from '../types/offer-type';
 export const nearPlaces: OffersShort = [
   {
     id: '1',

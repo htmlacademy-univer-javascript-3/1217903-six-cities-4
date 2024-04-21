@@ -1,4 +1,5 @@
-import ReviewsItem from "../Reviews-item/Reviews-item";
+import { ReviewsProps } from '../../types/reviews-type';
+import ReviewsItem from '../Reviews-item/Reviews-item';
 
 type ReviewsListProps = {
   reviews: ReviewsProps[];
@@ -14,8 +15,9 @@ function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
           review={review.review}
           dateTime={review.dateTime}
           rating={review.rating}
-        ></ReviewsItem>
-      )}
+        >
+        </ReviewsItem>
+      )};
     </ul>
   );
 }

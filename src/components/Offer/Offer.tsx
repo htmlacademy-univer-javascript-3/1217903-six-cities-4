@@ -9,10 +9,10 @@ type OfferProps = {
   articleClass?: string;
 }
 
-function Card({offer, onHover, imageWrapperClass = 'cities__image-wrapper',articleClass = 'cities__card'}: OfferProps): JSX.Element {
+function Card({ offer, onHover, imageWrapperClass = 'cities__image-wrapper', articleClass = 'cities__card' }: OfferProps): JSX.Element {
   return (
     <article
-    className={`place-card ${articleClass}`}
+      className={`place-card ${articleClass}`}
       onMouseEnter={() => onHover?.(offer.id)}
       onMouseLeave={() => onHover?.(null)}
     >
