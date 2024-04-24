@@ -59,7 +59,7 @@ function Main(props: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <OffersList offers={props.offers} ></OffersList>
             <div className="cities__right-section">
-              <Map centre={centre} points={points} />
+              <Map centre={centre} points={points} type='cities__map'/>
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@ import { Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import { mockOffersDetailed } from '../mocks/offers-detailed';
 import { AppRoute } from '../consts';
-import ReviewForm from '../components/Reviews-form/Reviews-form';
 import ReviewsList from '../components/Reviews-list/Reviews-list';
 import NearPlaces from '../components/Near-places/Near-places';
 import { OffersShort } from '../types/offer-type';
@@ -147,14 +146,10 @@ function Offer(props: OfferPageProps): JSX.Element {
                   </p>
                 </div>
               </div>
-              <section className="offer__reviews reviews">
-                <h2 className="reviews__title">Reviews · <span className="reviews__amount">1</span></h2>
-                <ReviewsList reviews={props.reviews}></ReviewsList>
-                <ReviewForm></ReviewForm>
-              </section>
+              <ReviewsList reviews={props.reviews}></ReviewsList>
             </div>
           </div>
-          <Map centre={centre} points={points}></Map>
+          <Map centre={centre} points={points} type='offer__map'></Map>
           <div className="container">
             <NearPlaces nearPlaces={props.nearPlaces}></NearPlaces>
           </div>

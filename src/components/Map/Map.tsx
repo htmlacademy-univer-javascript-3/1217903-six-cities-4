@@ -7,10 +7,11 @@ import { Location } from '../../types/location-type';
 type MapProps = {
   centre: Location;
   points: Location[];
+  type: string;
 };
 
 
-function Map({ centre, points }: MapProps): JSX.Element {
+function Map({ centre, points,type }: MapProps): JSX.Element {
 
   const mapRef = useRef(null);
   const map = useMap({mapRef, centre});
@@ -34,7 +35,7 @@ function Map({ centre, points }: MapProps): JSX.Element {
     }
   }, [map, points]);
 
-  return <section className="cities__map map" ref={mapRef}></section>;
+  return <section className={`${type} map`} ref={mapRef}></section>;
 }
 
 export default Map;
