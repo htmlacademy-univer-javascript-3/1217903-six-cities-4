@@ -4,13 +4,15 @@ import ReviewsItem from '../Reviews-item/Reviews-item';
 
 type ReviewsListProps = {
   reviews: ReviewsProps[];
-}
+};
 function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
   return (
     <section className="offer__reviews reviews">
-      <h2 className="reviews__title">Reviews · <span className="reviews__amount">{reviews.length}</span></h2>
+      <h2 className="reviews__title">
+        Reviews · <span className="reviews__amount">{reviews.length}</span>
+      </h2>
       <ul className="reviews__list">
-        {reviews.map((review) =>
+        {reviews.map((review) => (
           <ReviewsItem
             key={review.rating + review.name}
             name={review.name}
@@ -20,10 +22,11 @@ function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
             rating={review.rating}
           >
           </ReviewsItem>
-        )};
+        ))}
+        ;
       </ul>
       <ReviewForm></ReviewForm>
-      </section>
-      );
+    </section>
+  );
 }
-      export default ReviewsList;
+export default ReviewsList;
