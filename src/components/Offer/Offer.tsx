@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { OfferShort } from '../../types/offer-type';
 import { AppRoute } from '../../consts';
+import PremiumLabel from '../Premiumlabel/Premiumlabel';
+import OfferRating from '../Offer-rating/Offer-rating';
 
 type OfferProps = {
   offer: OfferShort;
@@ -16,11 +18,7 @@ function Card({ offer, onHover, imageWrapperClass = 'cities__image-wrapper', art
       onMouseEnter={() => onHover?.(offer.id)}
       onMouseLeave={() => onHover?.(null)}
     >
-      {offer.isPremium && (
-        <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-      )}
+      <PremiumLabel isPremium={offer.isPremium} classnamePrefix='place-card' />
       <div className={`${imageWrapperClass} place-card__image-wrapper`}>
         <Link to={AppRoute.Offer.replace(':id', offer.id)} >
           <img
@@ -47,12 +45,7 @@ function Card({ offer, onHover, imageWrapperClass = 'cities__image-wrapper', art
             <span className="visually-hidden">{offer.isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
           </button>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: `${offer.rating * 20}%` }}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <OfferRating rating={offer.rating} type='card'/>
         <h2 className="place-card__name">
           <Link to={AppRoute.Offer.replace(':id', offer.id)}>{offer.title}</Link>
         </h2>

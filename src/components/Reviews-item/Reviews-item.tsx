@@ -1,6 +1,7 @@
-import { ReviewsProps } from '../../types/reviews-type';
+import { Review } from '../../types/reviews-type';
 import { formatDate } from '../../utils';
-function ReviewsItem({ name, avatar, review, dateTime, rating }: ReviewsProps): JSX.Element {
+import OfferRating from '../Offer-rating/Offer-rating';
+function ReviewsItem({ name, avatar, review, dateTime, rating }: Review): JSX.Element {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">
@@ -12,12 +13,7 @@ function ReviewsItem({ name, avatar, review, dateTime, rating }: ReviewsProps): 
         </span>
       </div>
       <div className="reviews__info">
-        <div className="reviews__rating rating">
-          <div className="reviews__stars rating__stars">
-            <span style={{ width: '80%' }} />
-            <span className="visually-hidden">{rating}</span>
-          </div>
-        </div>
+        <OfferRating rating={rating} type='review' />
         <p className="reviews__text">
           {review}
         </p>

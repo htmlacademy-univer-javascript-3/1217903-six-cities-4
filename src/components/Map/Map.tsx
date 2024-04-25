@@ -2,14 +2,7 @@ import { useRef, useEffect } from 'react';
 import {Marker, layerGroup } from 'leaflet';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
-import { Location } from '../../types/location-type';
-
-type MapProps = {
-  centre: Location;
-  points: Location[];
-  type: string;
-};
-
+import { MapProps } from '../../types/map-type';
 
 function Map({ centre, points,type }: MapProps): JSX.Element {
 

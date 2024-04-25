@@ -1,9 +1,9 @@
-import { ReviewsProps } from '../../types/reviews-type';
+import { Review } from '../../types/reviews-type';
 import ReviewForm from '../Reviews-form/Reviews-form';
 import ReviewsItem from '../Reviews-item/Reviews-item';
 
 type ReviewsListProps = {
-  reviews: ReviewsProps[];
+  reviews: Review[];
 };
 
 function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
@@ -16,11 +16,7 @@ function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
         {reviews.map((review) => (
           <ReviewsItem
             key={review.name}
-            name={review.name}
-            avatar={review.avatar}
-            review={review.review}
-            dateTime={review.dateTime}
-            rating={review.rating}
+            {...review}
           />
         ))}
       </ul>

@@ -1,4 +1,4 @@
-export type ReviewsProps = {
+export type Review = {
     name: string;
     avatar: string;
     review: string;

@@ -1,15 +1,18 @@
 import { Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import { mockOffersDetailed } from '../mocks/offers-detailed';
-import { AppRoute } from '../consts';
+import { AppRoute, MapType } from '../consts';
 import ReviewsList from '../components/Reviews-list/Reviews-list';
 import NearPlaces from '../components/Near-places/Near-places';
 import { OffersShort } from '../types/offer-type';
 import { Location } from '../types/location-type';
 import Map from '../components/Map/Map';
-import { ReviewsProps } from '../types/reviews-type';
+import { Review } from '../types/reviews-type';
+import PremiumLabel from '../components/Premiumlabel/Premiumlabel';
+import OfferRating from '../components/Offer-rating/Offer-rating';
+
 type OfferPageProps = {
-  reviews: ReviewsProps[];
+  reviews: Review[];
   nearPlaces: OffersShort;
 }
 function Offer(props: OfferPageProps): JSX.Element {
@@ -53,9 +56,7 @@ function Offer(props: OfferPageProps): JSX.Element {
           </div>
           <div className="offer__container container">
             <div className="offer__wrapper">
-              <div className="offer__mark">
-                <span>Premium</span>
-              </div>
+              <PremiumLabel isPremium={offer.isPremium} classnamePrefix='offer' />
               <div className="offer__name-wrapper">
                 <h1 className="offer__name">
                   Beautiful &amp; luxurious studio at great location
@@ -67,13 +68,9 @@ function Offer(props: OfferPageProps): JSX.Element {
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
-              <div className="offer__rating rating">
-                <div className="offer__stars rating__stars">
-                  <span style={{ width: '80%' }} />
-                  <span className="visually-hidden">Rating</span>
-                </div>
-                <span className="offer__rating-value rating__value">4.8</span>
-              </div>
+              <OfferRating rating={offer.rating} type='full'>
+                <span className="offer__rating-value rating__value">{offer.rating}</span>
+              </OfferRating>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
                   Apartment
@@ -149,7 +146,7 @@ function Offer(props: OfferPageProps): JSX.Element {
               <ReviewsList reviews={props.reviews}></ReviewsList>
             </div>
           </div>
-          <Map centre={centre} points={points} type='offer__map'></Map>
+          <Map centre={centre} points={points} type={MapType.OfferMap}></Map>
           <div className="container">
             <NearPlaces nearPlaces={props.nearPlaces}></NearPlaces>
           </div>
