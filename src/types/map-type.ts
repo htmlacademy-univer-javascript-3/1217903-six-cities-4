@@ -1,12 +1,11 @@
+import { MapType } from '../consts';
 import { Location } from './location-type';
-import { Offers } from './offer-type';
 
 export type MapProps = {
-    location: Location;
-    offers: Offers;
-    specialOfferId: string | null;
-    type: string;
-};
+    centre: Location;
+    points: Location[];
+    type: MapType;
+  };
 
 export type PointType = {
     title: string;

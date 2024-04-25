@@ -2,15 +2,9 @@ import { useRef, useEffect } from 'react';
 import {Marker, layerGroup } from 'leaflet';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
-import { Location } from '../../types/location-type';
+import { MapProps } from '../../types/map-type';
 
-type MapProps = {
-  centre: Location;
-  points: Location[];
-};
-
-
-function Map({ centre, points }: MapProps): JSX.Element {
+function Map({ centre, points,type }: MapProps): JSX.Element {
 
   const mapRef = useRef(null);
   const map = useMap({mapRef, centre});
@@ -34,7 +28,7 @@ function Map({ centre, points }: MapProps): JSX.Element {
     }
   }, [map, points]);
 
-  return <section className="cities__map map" ref={mapRef}></section>;
+  return <section className={`${type} map`} ref={mapRef}></section>;
 }
 
 export default Map;

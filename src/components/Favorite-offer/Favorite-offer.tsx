@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { OfferShort } from '../../types/offer-type';
 import { AppRoute } from '../../consts';
+import PremiumLabel from '../Premiumlabel/Premiumlabel';
+import OfferRating from '../Offer-rating/Offer-rating';
 
 type FavoriteOfferProps = {
   offer: OfferShort;
@@ -14,11 +16,7 @@ function FavoriteOffer(props: FavoriteOfferProps): JSX.Element {
       onMouseEnter={() => props.onHover(props.offer.id)}
       onMouseLeave={() => props.onHover(null)}
     >
-      {props.offer.isPremium && (
-        <div className='place-card__mark'>
-          <span>Premium</span>
-        </div>
-      )}
+      <PremiumLabel isPremium={props.offer.isPremium} classnamePrefix='place-card' />
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.Offer.replace(':id', props.offer.id)}>
           <img
@@ -45,12 +43,7 @@ function FavoriteOffer(props: FavoriteOfferProps): JSX.Element {
             <span className="visually-hidden">{props.offer.isFavorite ? 'In bookmarks' : 'To bookmarks'}</span>
           </button>
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: `${props.offer.rating * 20}%` }}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
+        <OfferRating rating={props.offer.rating} type='card' />
         <h2 className="place-card__name">
           <Link to={AppRoute.Offer.replace(':id', props.offer.id)}>{props.offer.title}</Link>
         </h2>

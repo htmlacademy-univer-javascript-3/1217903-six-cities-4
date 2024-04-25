@@ -1,7 +1,3 @@
-export const Settings = {
-  cardsCount: 5,
-};
-
 export enum AppRoute {
   Main = '/',
   SignIn = '/signIn',
@@ -14,6 +10,11 @@ export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
+}
+
+export enum MapType {
+  CityMap = 'cities__map',
+  OfferMap ='offer__map',
 }
 
 export const URL_MARKER_DEFAULT =

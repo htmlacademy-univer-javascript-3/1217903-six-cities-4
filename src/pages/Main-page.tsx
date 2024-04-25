@@ -3,6 +3,7 @@ import OffersList from '../components/Offer-list/Offer-list.tsx';
 import { OffersShort } from '../types/offer-type.ts';
 import Map from '../components/Map/Map.tsx';
 import { Location } from '../types/location-type.ts';
+import { MapType } from '../consts.ts';
 
 type MainProps = {
   offers: OffersShort;
@@ -59,7 +60,7 @@ function Main(props: MainProps): JSX.Element {
           <div className="cities__places-container container">
             <OffersList offers={props.offers} ></OffersList>
             <div className="cities__right-section">
-              <Map centre={centre} points={points} />
+              <Map centre={centre} points={points} type={MapType.CityMap}/>
             </div>
           </div>
         </div>

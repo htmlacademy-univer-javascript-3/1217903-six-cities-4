@@ -7,9 +7,12 @@ import { AppRoute, AuthorizationStatus } from '../../consts';
 import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
 import SignIn from '../../pages/SignIn-page';
+import { ReviewsProps } from '../../types/reviews-type';
 type AppProps = {
   offersShort: OffersShort;
   favoritesOffers: OffersShort;
+  reviews: ReviewsProps[];
+  nearPlaces: OffersShort;
 };
 
 function App(props: AppProps): JSX.Element {
@@ -30,7 +33,7 @@ function App(props: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer /*offersDetailed={props.offersDetailed}*/ />}
+          element={<Offer nearPlaces={props.nearPlaces} reviews={props.reviews}/>}
         />
         <Route
           path='*'
