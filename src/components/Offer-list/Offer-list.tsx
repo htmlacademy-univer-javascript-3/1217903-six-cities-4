@@ -1,19 +1,21 @@
-import Offer from '../Offer/Offer.tsx';
-import { OffersShort } from '../../types/offer-type.ts';
+import Card from '../Offer/Offer.tsx';
+import { Offer } from '../../types/offer-type.ts';
 import { useState } from 'react';
+import { CitiesName } from '../../consts.ts';
 
 type OffersListProps = {
-  offers: OffersShort;
+  offers: Offer[];
+  currentCity: CitiesName;
 }
 
 function OffersList(props: OffersListProps): JSX.Element {
 
-  const [, setHoverOfferId] = useState<string | null>(null);
-  const hendleHoverCard = (id: string | null) => setHoverOfferId(id);
+  const [, setHoverOfferId] = useState<number | null>(null);
+  const hendleHoverCard = (id: number | null) => setHoverOfferId(id);
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>
-      <b className="places__found">312 places to stay in Amsterdam</b>
+      <b className="places__found">{props.offers.length} places to stay in {props.currentCity}</b>
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by</span>
         <span className="places__sorting-type" tabIndex={0}>
@@ -31,7 +33,7 @@ function OffersList(props: OffersListProps): JSX.Element {
       </form>
       <div className="cities__places-list places__list tabs__content">
         {props.offers.map((offer) => (
-          <Offer offer={offer} key={offer.id} onHover={hendleHoverCard} />))}
+          <Card offer={offer} key={offer.id} onHover={hendleHoverCard} />))}
       </div>
     </section>
   );

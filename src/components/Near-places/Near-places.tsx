@@ -1,8 +1,8 @@
-import { OffersShort } from '../../types/offer-type';
+import { Offer } from '../../types/offer-type';
 import Card from '../Offer/Offer';
 
 type NearPlacesProps = {
-  nearPlaces: OffersShort;
+  nearPlaces: Offer[];
 };
 
 function NearPlaces({ nearPlaces }: NearPlacesProps): JSX.Element {

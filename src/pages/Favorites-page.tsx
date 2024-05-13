@@ -1,9 +1,9 @@
 import FavoriteOffersList from '../components/Favorite-offer-list/Favorite-offer-list';
 import Header from '../components/Header/Header';
-import { OffersShort } from '../types/offer-type';
+import { Offer } from '../types/offer-type';
 
 type FavoritePageProps = {
-  favoriteOffers: OffersShort;
+  favoriteOffers: Offer[];
 }
 
 function Favorites(props: FavoritePageProps): JSX.Element {

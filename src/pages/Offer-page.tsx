@@ -1,10 +1,10 @@
 import { Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import { mockOffersDetailed } from '../mocks/offers-detailed';
+import { mockOffers } from '../mocks/offers';
 import { AppRoute, MapType } from '../consts';
 import ReviewsList from '../components/Reviews-list/Reviews-list';
 import NearPlaces from '../components/Near-places/Near-places';
-import { OffersShort } from '../types/offer-type';
+import { Offer } from '../types/offer-type';
 import { Location } from '../types/location-type';
 import Map from '../components/Map/Map';
 import { Review } from '../types/reviews-type';
@@ -13,9 +13,9 @@ import OfferRating from '../components/Offer-rating/Offer-rating';
 
 type OfferPageProps = {
   reviews: Review[];
-  nearPlaces: OffersShort;
+  nearPlaces: Offer[];
 }
-function Offer(props: OfferPageProps): JSX.Element {
+function OfferPage(props: OfferPageProps): JSX.Element {
   const points = props.nearPlaces.map((offer) => offer.location);
   const centre: Location = {
     latitude: 52.37454,
@@ -23,7 +23,7 @@ function Offer(props: OfferPageProps): JSX.Element {
     zoom: 12,
   };
   const { id } = useParams();
-  const offer = mockOffersDetailed.find((el) => el.id === id);
+  const offer = mockOffers.find((el) => el.id === Number(id));
   if (!offer) {
     return <Navigate to={AppRoute.NotFound} />;
   }
@@ -156,4 +156,4 @@ function Offer(props: OfferPageProps): JSX.Element {
 
   );
 }
-export default Offer;
+export default OfferPage;
