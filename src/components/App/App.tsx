@@ -1,27 +1,25 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from '../../pages/Main-page';
-import {OffersShort} from '../../types/offer-type';
 import Favorites from '../../pages/Favorites-page';
-import Offer from '../../pages/Offer-page';
+import OfferPage from '../../pages/Offer-page';
 import { AppRoute, AuthorizationStatus } from '../../consts';
 import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
 import SignIn from '../../pages/SignIn-page';
-import { ReviewsProps } from '../../types/reviews-type';
+import { Review } from '../../types/reviews-type';
+import { useAppSelector } from '../../hooks';
 type AppProps = {
-  offersShort: OffersShort;
-  favoritesOffers: OffersShort;
-  reviews: ReviewsProps[];
-  nearPlaces: OffersShort;
+  reviews: Review[];
 };
 
 function App(props: AppProps): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element={<Main offers={props.offersShort} />}
+          element={<Main offers={offers} />}
         />
         <Route
           path={AppRoute.SignIn}
@@ -29,11 +27,11 @@ function App(props: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Favorite}
-          element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorites favoriteOffers={props.favoritesOffers}></Favorites></PrivateRoute>}
+          element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorites favoriteOffers={offers}></Favorites></PrivateRoute>}
         />
         <Route
           path={AppRoute.Offer}
-          element={<Offer nearPlaces={props.nearPlaces} reviews={props.reviews}/>}
+          element={<OfferPage nearPlaces={offers} reviews={props.reviews} />}
         />
         <Route
           path='*'
@@ -41,7 +39,6 @@ function App(props: AppProps): JSX.Element {
         />
       </Routes>
     </BrowserRouter>
-
   );
 }
 

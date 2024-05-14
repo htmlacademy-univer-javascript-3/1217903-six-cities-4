@@ -1,14 +1,14 @@
 import FavoriteOffer from '../Favorite-offer/Favorite-offer.tsx';
-import { OffersShort } from '../../types/offer-type.ts';
+import { Offer } from '../../types/offer-type.ts';
 import { useState } from 'react';
 
 type FavoriteOffersListProps = {
-  favoriteOffers: OffersShort;
+  favoriteOffers: Offer[];
 }
 
 function FavoriteOffersList(props: FavoriteOffersListProps): JSX.Element {
 
-  const [, setActiveOfferId] = useState<string | null>(null);
+  const [, setActiveOfferId] = useState<number | null>(null);
   const locations = [...new Set(props.favoriteOffers.map((offer) => offer.city.name))];
   return (
     <ul className="favorites__list">

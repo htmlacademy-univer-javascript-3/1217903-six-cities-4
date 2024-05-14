@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { OfferShort } from '../../types/offer-type';
+import { Offer } from '../../types/offer-type';
 import { AppRoute } from '../../consts';
 import PremiumLabel from '../Premiumlabel/Premiumlabel';
 import OfferRating from '../Offer-rating/Offer-rating';
 
 type OfferProps = {
-  offer: OfferShort;
-  onHover?: (id: string | null) => void;
+  offer: Offer;
+  onHover?: (id: number | null) => void;
   imageWrapperClass?: string;
   articleClass?: string;
 }
@@ -20,7 +20,7 @@ function Card({ offer, onHover, imageWrapperClass = 'cities__image-wrapper', art
     >
       <PremiumLabel isPremium={offer.isPremium} classnamePrefix='place-card' />
       <div className={`${imageWrapperClass} place-card__image-wrapper`}>
-        <Link to={AppRoute.Offer.replace(':id', offer.id)} >
+        <Link to={AppRoute.Offer.replace(':id', `${offer.id}`)} >
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -47,7 +47,7 @@ function Card({ offer, onHover, imageWrapperClass = 'cities__image-wrapper', art
         </div>
         <OfferRating rating={offer.rating} type='card'/>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer.replace(':id', offer.id)}>{offer.title}</Link>
+          <Link to={AppRoute.Offer.replace(':id', `${offer.id}`)}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>
