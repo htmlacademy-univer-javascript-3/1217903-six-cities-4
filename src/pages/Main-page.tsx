@@ -11,10 +11,11 @@ import { cities } from '../mocks/Cities.ts';
 type MainProps = {
   offers: Offer[];
 }
+
 function Main(props: MainProps): JSX.Element {
-  const currentCity = useAppSelector((state)=>state.city);
+  const currentCity = useAppSelector((state) => state.city);
   const points = props.offers.map((offer) => offer.location);
-  const currentCityCoords = cities.find(city => city.name === currentCity)?.location;
+  const currentCityCoords = cities.find((city) => city.name === currentCity as string)?.location;
   const centre: Location = {
     latitude: currentCityCoords?.latitude as number,
     longitude: currentCityCoords?.longitude as number,
@@ -25,12 +26,12 @@ function Main(props: MainProps): JSX.Element {
     <div className="page page--gray page--main">
       <Header></Header>
       <main className="page__main page__main--index">
-        <CitiesList currentCity={currentCity}/>
+        <CitiesList currentCity={currentCity} />
         <div className="cities">
           <div className="cities__places-container container">
             <OffersList currentCity={currentCity} offers={props.offers} ></OffersList>
             <div className="cities__right-section">
-              <Map centre={centre} points={points} type={MapType.CityMap}/>
+              <Map centre={centre} points={points} type={MapType.CityMap} />
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { SortingTypesArr } from '../../consts'
+import { SortingTypesArr } from '../../consts';
 export type SortingProps = {
   sortingType: string;
   onChangeSortingType: (type: string) => void;
@@ -20,13 +20,14 @@ function Sorting({ sortingType, onChangeSortingType }: SortingProps): JSX.Elemen
             className={type === sortingType ? 'places__option' : 'places__option places__option--active'}
             tabIndex={0}
             onClick={() => onChangeSortingType(type)}
-            key={type}>
+            key={type}
+          >
             {type}
           </li>
         )}
       </ul>
     </form>
-  )
+  );
 }
 
 export default Sorting;
