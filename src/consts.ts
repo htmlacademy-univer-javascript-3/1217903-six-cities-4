@@ -36,3 +36,5 @@ export enum Actions {
   change_city = 'sixSities/changeCity',
   filter_offers = 'sixSities/filterOffers',
 }
+
+export const SortingTypesArr = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
