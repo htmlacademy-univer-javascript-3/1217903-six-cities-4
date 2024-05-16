@@ -15,7 +15,7 @@ function Sorting({ sortingType, onChangeSortingType }: SortingProps): JSX.Elemen
         </svg>
       </span>
       <ul className="places__options places__options--custom places__options--opened">
-        {SortingTypesArr.map((type) =>
+        {SortingTypesArr.map((type) =>(
           <li
             className={type === sortingType ? 'places__option' : 'places__option places__option--active'}
             tabIndex={0}
@@ -23,7 +23,7 @@ function Sorting({ sortingType, onChangeSortingType }: SortingProps): JSX.Elemen
             key={type}
           >
             {type}
-          </li>
+          </li>)
         )}
       </ul>
     </form>
