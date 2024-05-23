@@ -6,7 +6,7 @@ import OfferRating from '../Offer-rating/Offer-rating';
 
 type FavoriteOfferProps = {
   offer: Offer;
-  onHover: (id: number | null) => void;
+  onHover: (id: string | null) => void;
 }
 
 function FavoriteOffer(props: FavoriteOfferProps): JSX.Element {

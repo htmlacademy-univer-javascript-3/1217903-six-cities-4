@@ -8,7 +8,7 @@ type FavoriteOffersListProps = {
 
 function FavoriteOffersList(props: FavoriteOffersListProps): JSX.Element {
 
-  const [, setActiveOfferId] = useState<number | null>(null);
+  const [, setActiveOfferId] = useState<string | null>(null);
   const locations = [...new Set(props.favoriteOffers.map((offer) => offer.city.name))];
   return (
     <ul className="favorites__list">

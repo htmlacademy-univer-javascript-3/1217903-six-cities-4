@@ -6,7 +6,7 @@ import OfferRating from '../Offer-rating/Offer-rating';
 
 type OfferProps = {
   offer: Offer;
-  onHover?: (id: number | null) => void;
+  onHover?: (id: string | null) => void;
   imageWrapperClass?: string;
   articleClass?: string;
 }
