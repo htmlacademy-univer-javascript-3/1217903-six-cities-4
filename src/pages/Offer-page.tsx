@@ -1,18 +1,18 @@
 import { Navigate, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import { mockOffers } from '../mocks/offers';
+// import { mockOffers } from '../mocks/offers';
 import { AppRoute, MapType } from '../consts';
-import ReviewsList from '../components/Reviews-list/Reviews-list';
+// import ReviewsList from '../components/Reviews-list/Reviews-list';
 import NearPlaces from '../components/Near-places/Near-places';
 import { Offer } from '../types/offer-type';
 import { Location } from '../types/location-type';
 import Map from '../components/Map/Map';
-import { Review } from '../types/reviews-type';
+// import { Review } from '../types/reviews-type';
 import PremiumLabel from '../components/Premiumlabel/Premiumlabel';
 import OfferRating from '../components/Offer-rating/Offer-rating';
 
 type OfferPageProps = {
-  reviews: Review[];
+  // reviews: Review[];
   nearPlaces: Offer[];
 }
 function OfferPage(props: OfferPageProps): JSX.Element {
@@ -23,7 +23,7 @@ function OfferPage(props: OfferPageProps): JSX.Element {
     zoom: 12,
   };
   const { id } = useParams();
-  const offer = mockOffers.find((el) => el.id === Number(id));
+  const offer = props.nearPlaces.find((el) => el.id === id);
   if (!offer) {
     return <Navigate to={AppRoute.NotFound} />;
   }
@@ -143,7 +143,7 @@ function OfferPage(props: OfferPageProps): JSX.Element {
                   </p>
                 </div>
               </div>
-              <ReviewsList reviews={props.reviews}></ReviewsList>
+              {/* <ReviewsList reviews={props.reviews}></ReviewsList> */}
             </div>
           </div>
           <Map centre={centre} points={points} type={MapType.OfferMap}></Map>

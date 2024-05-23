@@ -3,7 +3,7 @@ import { Host } from './host-type';
 import { Location } from './location-type';
 
 export type Offer = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   type: string;

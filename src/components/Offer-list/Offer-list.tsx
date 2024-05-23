@@ -12,9 +12,9 @@ type OffersListProps = {
 
 function OffersList(props: OffersListProps): JSX.Element {
 
-  const [, setHoverOfferId] = useState<number | null>(null);
+  const [, setHoverOfferId] = useState<string | null>(null);
   const [sortingType, setSortingType] = useState<SortingTypes>('Popular');
-  const hendleHoverCard = (id: number | null) => setHoverOfferId(id);
+  const hendleHoverCard = (id: string | null) => setHoverOfferId(id);
   return (
     <section className="cities__places places">
       <h2 className="visually-hidden">Places</h2>

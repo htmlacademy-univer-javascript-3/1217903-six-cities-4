@@ -6,15 +6,14 @@ import { AppRoute, AuthorizationStatus } from '../../consts';
 import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
 import SignIn from '../../pages/SignIn-page';
-import { Review } from '../../types/reviews-type';
 import { useAppSelector } from '../../hooks';
-type AppProps = {
-  reviews: Review[];
-};
+import LoadingPage from '../../pages/Loading-page';
 
-function App(props: AppProps): JSX.Element {
-  const offers = useAppSelector((state) => state.offers);
-  return (
+
+function App(): JSX.Element {
+  const isLoading = useAppSelector((state) => state.isLoading);
+  const offers = useAppSelector((state) => state.filteredOffers);
+  return isLoading ? <LoadingPage /> : (
     <BrowserRouter>
       <Routes>
         <Route
@@ -31,7 +30,7 @@ function App(props: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferPage nearPlaces={offers} reviews={props.reviews} />}
+          element={<OfferPage nearPlaces={offers} />}
         />
         <Route
           path='*'
