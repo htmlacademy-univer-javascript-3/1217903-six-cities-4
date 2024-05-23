@@ -13,7 +13,7 @@ type MainProps = {
 }
 
 function Main(props: MainProps): JSX.Element {
-  const currentCity = useAppSelector((state) => state.city);
+  const currentCity = useAppSelector((state) => state.cityName);
   const points = props.offers.map((offer) => offer.location);
   const currentCityCoords = cities.find((city) => city.name === currentCity as string)?.location;
   const centre: Location = {
@@ -21,6 +21,7 @@ function Main(props: MainProps): JSX.Element {
     longitude: currentCityCoords?.longitude as number,
     zoom: currentCityCoords?.zoom as number,
   };
+
 
   return (
     <div className="page page--gray page--main">

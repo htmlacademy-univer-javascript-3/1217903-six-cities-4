@@ -35,6 +35,16 @@ export enum CitiesName {
 export enum Actions {
   change_city = 'sixSities/changeCity',
   filter_offers = 'sixSities/filterOffers',
+  is_loading = 'sixSities/isLoading',
+  set_Error = 'sixSities/setError',
+  load_offers = 'sixSities/loadOffers'
 }
 
 export const SortingTypesArr = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+
+export enum ApiRoute {
+  Offers = '/offers',
+  Questions = 'Questions',
+}
+
+export const TIMEOUT_SHOW_ERROR = 2000;

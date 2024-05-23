@@ -1,13 +1,19 @@
 import { useRef, useEffect } from 'react';
-import {Marker, layerGroup } from 'leaflet';
+import { Marker, layerGroup } from 'leaflet';
 import useMap from '../../hooks/use-map';
 import 'leaflet/dist/leaflet.css';
 import { MapProps } from '../../types/map-type';
 
-function Map({ centre, points,type }: MapProps): JSX.Element {
+function Map({ centre, points, type }: MapProps): JSX.Element {
 
   const mapRef = useRef(null);
-  const map = useMap({mapRef, centre});
+  const map = useMap({ mapRef, centre });
+
+  useEffect(() => {
+    if (map) {
+      map.setView([centre.latitude, centre.longitude], centre.zoom);
+    }
+  }, [map, centre]);
 
   useEffect(() => {
     if (map) {
@@ -26,7 +32,7 @@ function Map({ centre, points,type }: MapProps): JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, points]);
+  }, [map, points, centre]);
 
   return <section className={`${type} map`} ref={mapRef}></section>;
 }
