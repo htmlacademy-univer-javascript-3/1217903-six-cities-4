@@ -12,4 +12,5 @@ export type StateType = {
   filteredOffers: Offer[];
   isLoading: boolean;
   error: string | null;
+  authorizationStatus: string;
 }

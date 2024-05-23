@@ -1,9 +1,12 @@
 export enum AppRoute {
   Main = '/',
-  SignIn = '/signIn',
+  login = '/login',
   Favorite = '/favorite',
   Offer = '/offer/:id',
-  NotFound = '*'
+  NotFound = '*',
+  Offers = '/offers',
+  Questions = 'Questions',
+  Logout = '/logout',
 }
 
 export enum AuthorizationStatus {
@@ -34,17 +37,21 @@ export enum CitiesName {
 
 export enum Actions {
   change_city = 'sixSities/changeCity',
-  filter_offers = 'sixSities/filterOffers',
+  filter_offers = 'sixSities/offers/filterOffers',
   is_loading = 'sixSities/isLoading',
-  set_Error = 'sixSities/setError',
-  load_offers = 'sixSities/loadOffers'
+  set_Error = 'error/setError',
+  load_offers = 'sixSities/offers/loadOffers',
+  set_authorization_status = 'auth/setAuthorizationStatus',
+  clear_error = 'error/clearError',
+  get_offers = 'sixSities/offers/getOffers',
+  check_auth = 'auth/checkAuth',
+  Log_in = 'auth/login',
+  Log_out = 'auth/logout'
 }
 
 export const SortingTypesArr = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
-export enum ApiRoute {
-  Offers = '/offers',
-  Questions = 'Questions',
-}
 
 export const TIMEOUT_SHOW_ERROR = 2000;
+
+
