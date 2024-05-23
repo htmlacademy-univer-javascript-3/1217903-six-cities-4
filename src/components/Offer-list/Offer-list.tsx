@@ -1,9 +1,9 @@
 import Card from '../Offer/Offer.tsx';
 import { Offer, SortingTypes } from '../../types/offer-type.ts';
 import { useState } from 'react';
-import { CitiesName} from '../../consts.ts';
+import { CitiesName } from '../../consts.ts';
 import Sorting from '../Sorting/Sorting.tsx';
-import { sortOffers } from '../../utils.ts';
+import { sortOffers } from '../../services/utils.ts';
 
 type OffersListProps = {
   offers: Offer[];

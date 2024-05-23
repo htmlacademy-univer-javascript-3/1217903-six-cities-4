@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from '../../pages/Main-page';
 import Favorites from '../../pages/Favorites-page';
 import OfferPage from '../../pages/Offer-page';
-import { AppRoute, AuthorizationStatus } from '../../consts';
+import { AppRoute } from '../../consts';
 import NotFound from '../../pages/NotFound-page';
 import PrivateRoute from '../Private-route/Private-route';
-import SignIn from '../../pages/SignIn-page';
+import Login from '../../pages/Login-page';
 import { useAppSelector } from '../../hooks';
 import LoadingPage from '../../pages/Loading-page';
 
@@ -13,6 +13,7 @@ import LoadingPage from '../../pages/Loading-page';
 function App(): JSX.Element {
   const isLoading = useAppSelector((state) => state.isLoading);
   const offers = useAppSelector((state) => state.filteredOffers);
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
   return isLoading ? <LoadingPage /> : (
     <BrowserRouter>
       <Routes>
@@ -21,12 +22,12 @@ function App(): JSX.Element {
           element={<Main offers={offers} />}
         />
         <Route
-          path={AppRoute.SignIn}
-          element={<SignIn />}
+          path={AppRoute.login}
+          element={<Login />}
         />
         <Route
           path={AppRoute.Favorite}
-          element={<PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorites favoriteOffers={offers}></Favorites></PrivateRoute>}
+          element={<PrivateRoute><Favorites favoriteOffers={favoriteOffers}></Favorites></PrivateRoute>}
         />
         <Route
           path={AppRoute.Offer}

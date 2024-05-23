@@ -1,5 +1,5 @@
 import { Review } from '../../types/reviews-type';
-import { formatDate } from '../../utils';
+import { formatDate } from '../../services/utils';
 import OfferRating from '../Offer-rating/Offer-rating';
 function ReviewsItem({ name, avatar, review, dateTime, rating }: Review): JSX.Element {
   return (
