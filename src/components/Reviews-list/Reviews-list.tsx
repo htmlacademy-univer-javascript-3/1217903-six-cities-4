@@ -1,12 +1,12 @@
-import { Review } from '../../types/reviews-type';
+import { useAppSelector } from '../../hooks';
 import ReviewForm from '../Reviews-form/Reviews-form';
 import ReviewsItem from '../Reviews-item/Reviews-item';
 
-type ReviewsListProps = {
-  reviews: Review[];
-};
 
-function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
+function ReviewsList(): JSX.Element {
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const currentOfferComments = useAppSelector((state) => state.currentOffer.comments);
+  const reviews = currentOfferComments.slice().sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime())).slice(0, 10);
   return (
     <section className="offer__reviews reviews">
       <h2 className="reviews__title">
@@ -15,12 +15,12 @@ function ReviewsList({ reviews }: ReviewsListProps): JSX.Element {
       <ul className="reviews__list">
         {reviews.map((review) => (
           <ReviewsItem
-            key={review.name}
+            key={review.user.name}
             {...review}
           />
         ))}
       </ul>
-      <ReviewForm />
+      {authorizationStatus === 'AUTH' && <ReviewForm />}
     </section>
   );
 }

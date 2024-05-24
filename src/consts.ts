@@ -4,9 +4,7 @@ export enum AppRoute {
   Favorite = '/favorite',
   Offer = '/offer/:id',
   NotFound = '*',
-  Offers = '/offers',
   Questions = 'Questions',
-  Logout = '/logout',
 }
 
 export enum AuthorizationStatus {
@@ -37,21 +35,31 @@ export enum CitiesName {
 
 export enum Actions {
   change_city = 'sixSities/changeCity',
-  filter_offers = 'sixSities/offers/filterOffers',
-  is_loading = 'sixSities/isLoading',
-  set_Error = 'error/setError',
+  is_loading_offers = 'sixSities/isLoadingOffers',
   load_offers = 'sixSities/offers/loadOffers',
-  set_authorization_status = 'auth/setAuthorizationStatus',
+  filter_offers = 'sixSities/offers/filterOffers',
   clear_error = 'error/clearError',
-  get_offers = 'sixSities/offers/getOffers',
+  set_Error = 'error/setError',
   check_auth = 'auth/checkAuth',
   Log_in = 'auth/login',
-  Log_out = 'auth/logout'
+  Log_out = 'auth/logout',
+  set_authorization_status = 'auth/setAuthorizationStatus',
+  load_offer = 'sixSities/offer/loadOffer',
+  load_nearby_offers = 'sixSities/offers/loadNearbyOffers',
+  load_offer_comments = 'sixSities/offer/loadOfferComments',
+  is_loading_offer = 'sixSities/offer/isOfferLoading',
+  create_comment = 'sixSities/createComment',
+  get_offer = 'sixSities/offer/getOffer',
+
 }
 
 export const SortingTypesArr = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
-
 export const TIMEOUT_SHOW_ERROR = 2000;
 
-
+export enum APIRoute {
+  Offers = '/offers/',
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments/',
+}	

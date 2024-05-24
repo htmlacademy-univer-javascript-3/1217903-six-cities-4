@@ -10,7 +10,7 @@ export type Offer = {
   price: number;
   bedrooms: number;
   maxAdults: number;
-  amenities: string[];
+  goods: string[];
   host: Host;
   city: City;
   location: Location;

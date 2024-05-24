@@ -1,4 +1,4 @@
-import Header from '../components/Header/Header.tsx';
+import {Header} from '../components/Header/Header.tsx';
 import OffersList from '../components/Offer-list/Offer-list.tsx';
 import { Offer } from '../types/offer-type.ts';
 import Map from '../components/Map/Map.tsx';
