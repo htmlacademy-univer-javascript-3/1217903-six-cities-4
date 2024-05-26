@@ -1,5 +1,5 @@
 import FavoriteOffersList from '../components/Favorite-offer-list/Favorite-offer-list';
-import Header from '../components/Header/Header';
+import {Header} from '../components/Header/Header';
 import { Offer } from '../types/offer-type';
 
 type FavoritePageProps = {

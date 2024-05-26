@@ -1,14 +1,30 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import RatingInput from '../Rating-input/Rating-input';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { getOffer, postComment } from '../../store/api-actions';
 
 function ReviewForm(): JSX.Element {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(NaN);
-
+  const dispatch = useAppDispatch();
+  const currentOffer = useAppSelector((state) => state.currentOffer);
+  const currentOfferId = currentOffer ? currentOffer.offerInfo?.id : undefined;
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value);
   const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => setRating(Number(e.target.value));
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (comment && rating) {
+      const review = {id: currentOfferId, comment: comment, rating: rating};
+      dispatch(postComment(review)).unwrap().then(() => {
+        dispatch(getOffer(currentOffer?.offerInfo?.id));
+      });
+    }
+    setComment('');
+    setRating(NaN);
+  };
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" onSubmit={handleSubmit} method="post">
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
@@ -32,7 +48,6 @@ function ReviewForm(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled
         >
           Submit
         </button>

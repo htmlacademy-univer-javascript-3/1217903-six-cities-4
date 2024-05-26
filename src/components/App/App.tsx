@@ -14,7 +14,7 @@ function App(): JSX.Element {
   const isLoading = useAppSelector((state) => state.isLoading);
   const offers = useAppSelector((state) => state.filteredOffers);
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
-  return isLoading ? <LoadingPage /> : (
+  return (isLoading) ? <LoadingPage /> : (
     <BrowserRouter>
       <Routes>
         <Route
@@ -31,7 +31,7 @@ function App(): JSX.Element {
         />
         <Route
           path={AppRoute.Offer}
-          element={<OfferPage nearPlaces={offers} />}
+          element={<OfferPage />}
         />
         <Route
           path='*'
