@@ -6,29 +6,41 @@ import { getOffer, postComment } from '../../store/api-actions';
 function ReviewForm(): JSX.Element {
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(NaN);
+  const [message, setMessage] = useState(false);
   const dispatch = useAppDispatch();
   const currentOffer = useAppSelector((state) => state.currentOffer);
-  const currentOfferId = currentOffer ? currentOffer.offerInfo?.id : undefined;
+  const currentOfferId = currentOffer?.offerInfo?.id;
+
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => setComment(e.target.value);
   const handleRatingChange = (e: React.ChangeEvent<HTMLInputElement>) => setRating(Number(e.target.value));
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (comment && rating) {
-      const review = {id: currentOfferId, comment: comment, rating: rating};
-      dispatch(postComment(review)).unwrap().then(() => {
-        dispatch(getOffer(currentOffer?.offerInfo?.id));
-      });
+
+    if (comment.length < 30 || comment.length > 300) {
+      setMessage(true);
+      return;
     }
-    setComment('');
-    setRating(NaN);
+
+    setMessage(false);
+
+    if (comment && rating && comment.length >= 30 && comment.length <= 300) {
+      const review = { id: currentOfferId as string, comment, rating };
+      dispatch(postComment(review)).unwrap().then(() => {
+        dispatch(getOffer(currentOfferId));
+      });
+      setComment('');
+      setRating(NaN);
+    }
   };
+
   return (
     <form className="reviews__form form" onSubmit={handleSubmit} method="post">
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
-      <RatingInput onRateChange={handleRatingChange} rating={rating}></RatingInput>
+      <RatingInput onRateChange={handleRatingChange} rating={rating} />
+      {message && <span>The comment must be at least 30 and no more than 300 characters</span>}
       <textarea
         value={comment}
         onChange={handleCommentChange}
@@ -36,7 +48,6 @@ function ReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={''}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -52,8 +63,6 @@ function ReviewForm(): JSX.Element {
           Submit
         </button>
       </div>
-      <p>Your review rating: { }</p>
-      <p>Your review description: {}</p>
     </form>
   );
 }

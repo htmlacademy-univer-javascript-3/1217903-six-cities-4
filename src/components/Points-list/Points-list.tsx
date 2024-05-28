@@ -6,8 +6,7 @@ type ListProps = {
   onListItemHover: (listItemName: string) => void;
 };
 
-function List(props: ListProps): JSX.Element {
-  const {points, onListItemHover} = props;
+function List({points, onListItemHover}: ListProps): JSX.Element {
 
   const handleListItemHover = (event: MouseEvent<HTMLLIElement>) => {
     event.preventDefault();
