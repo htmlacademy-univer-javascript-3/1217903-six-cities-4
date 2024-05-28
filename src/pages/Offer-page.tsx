@@ -139,6 +139,8 @@ function OfferPage(): JSX.Element {
 
     );
   }
-  else { return <Navigate to={AppRoute.NotFound} /> }
+  else {
+    return <Navigate to={AppRoute.NotFound} />;
+  }
 }
 export default OfferPage;
