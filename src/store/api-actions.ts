@@ -7,7 +7,7 @@ import { filterOffers, loadOffers, isLoading, setError, setAuthorizationStatus, 
 import { store } from './';
 import { dropToken, saveToken } from '../services/token';
 import { AuthData } from '../types/auth-type';
-import { UserType } from '../types/uder-type';
+import { UserType } from '../types/user-type';
 import { ReviewData, ReviewType } from '../types/reviews-type';
 
 export const clearErrorAction = createAsyncThunk(
