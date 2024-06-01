@@ -138,8 +138,7 @@ function OfferPage(): JSX.Element {
       </div>
 
     );
-  }
-  else {
+  } else {
     return <Navigate to={AppRoute.NotFound} />;
   }
 }
